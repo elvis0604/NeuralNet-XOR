@@ -2,7 +2,7 @@ import numpy as numpy
 import matplotlib.pyplot as plot
 
 def sigmoid(x):
-    return 1/(1 + numpy.exp(-x))
+    return 1 / (1 + numpy.exp(-x))
 
 #backprop utility
 def sigmoid_der(x):
@@ -15,7 +15,7 @@ def forward(x, w1, w2, predict = False):
 
     #make and add bias
     bias = numpy.ones((len(z1), 1))
-    z1 = numpy.concatenate((bias, z1), axis=1)
+    z1 = numpy.concatenate((bias, z1), axis = 1)
     a2 = numpy.matmul(z1, w2)
     z2 = sigmoid(a2)
     if predict:
@@ -65,9 +65,7 @@ for i in range(epochs):
     costs.append(c)
     
     if i % 1000 == 0: #show less iteration
-        print(f"Iteration: + {i} + Error:  + {c}")
-
-print("DONE")
+        print(f"Iteration: {i} Error: {c}")
 
 #prediction
 z3 = forward(x, w1, w2, True)
@@ -75,6 +73,7 @@ print("Percentage: ")
 print(z3)
 print("Prediction: ")
 print(numpy.round(z3))
+
 #plotting
 plot.plot(costs)
 plot.show()
